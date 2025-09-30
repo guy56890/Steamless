@@ -6,6 +6,9 @@ public class Enemyfollowingscrip : MonoBehaviour
 {
     public Transform target;
     public float speed = 2f;
+    public SpriteRenderer spriteRenderer;
+
+    float oldX = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -17,5 +20,16 @@ public class Enemyfollowingscrip : MonoBehaviour
     void Update()
     {   
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        if (oldX < transform.position.x)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
+
+        oldX = transform.position.x;
+
     }
 }
