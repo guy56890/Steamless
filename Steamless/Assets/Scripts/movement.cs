@@ -7,6 +7,7 @@ public class movement : MonoBehaviour
     public float MovementSpeed = 1f;
     public float JumpForce = 1f;
     private Rigidbody2D rigidbody;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,4 +24,5 @@ public class movement : MonoBehaviour
             rigidbody.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
         }        
     }
+
 }
