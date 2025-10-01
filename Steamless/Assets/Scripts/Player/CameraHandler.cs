@@ -7,6 +7,7 @@ public class CameraHandler : MonoBehaviour
 {
     public float cameraSpeed = 2;
     public float radius = 3;
+    public float yOffset = 1f;
 
     CircleCollider2D trigger;
     GameObject playerObject;
@@ -22,13 +23,15 @@ public class CameraHandler : MonoBehaviour
         if (playerObject != null)
         {
 
-            Vector2 direction = (playerObject.transform.position - transform.position);
+            Vector3 desiredPos = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
+
+            Vector2 direction = (playerObject.transform.position - desiredPos);
             float distance = direction.magnitude;
 
             if (distance > radius)
             {
                 Vector3 target = new Vector3(playerObject.transform.position.x,
-                                            playerObject.transform.position.y,
+                                            playerObject.transform.position.y + yOffset,
                                             -10f);
 
                 // smooth interpolation, never stalls
